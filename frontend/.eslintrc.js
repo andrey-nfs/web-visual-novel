@@ -1,18 +1,22 @@
 module.exports = {
-  extends: [
-    'next/core-web-vitals',
-    'plugin:@next/next/recommended',
-    'next',
-    'airbnb',
-    'airbnb-typescript',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-  ],
   env: {
     browser: true,
     node: true,
   },
+  extends: [
+    'airbnb',
+    'airbnb-typescript',
+    'eslint:recommended',
+    'next',
+    'next/core-web-vitals',
+    'plugin:@next/next/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:storybook/recommended',
+  ],
+  ignorePatterns: [
+    '!.storybook',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -27,6 +31,7 @@ module.exports = {
   root: true,
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'storybook/no-uninstalled-addons': ['error', { packageJsonLocation: './package.json' }],
     'function-paren-newline': ['error', 'consistent'],
     'linebreak-style': 'off',
     'max-len': ['error', {
@@ -38,10 +43,12 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
+        extensions: [
+          '.ts', '.tsx', '.jsx', '.css',
+        ],
         map: [
           ['@', './app'],
         ],
-        extensions: ['.ts', '.tsx', '.jsx', '.css'],
       },
     },
   },

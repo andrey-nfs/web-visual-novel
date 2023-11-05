@@ -12,7 +12,8 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./app/*"],
+      "@/stories/*": ["./stories/*"],
     },
     "plugins": [
       {
@@ -30,6 +31,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".storybook/*.ts",
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "next.config.js",
